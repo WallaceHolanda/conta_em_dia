@@ -1,9 +1,9 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'i_secure_storage_datasource.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../secure_storage_service.dart';
 
-@LazySingleton(as: SecureStorageDatasource)
-class SecureStorageDatasourceImpl implements SecureStorageDatasource {
+@LazySingleton(as: SecureStorageService)
+class FlutterSecureStorageService implements SecureStorageService {
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
 
   @override
