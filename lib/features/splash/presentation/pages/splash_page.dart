@@ -1,7 +1,7 @@
 import 'package:conta_em_dia/core/design_system/ds_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/assets/images_enum.dart';
+import '../../../../core/assets/ds_images_enum.dart';
 import '../../../../core/design_system/ds_image.dart';
 import '../cubit/splash_cubit.dart';
 import '../cubit/splash_state.dart';
@@ -27,7 +27,7 @@ class SplashPage extends StatelessWidget {
           child: DsImage(
             height: 66,
             width: 180,
-            path: ImagesEnum.logoAlt.path,
+            path: DsImagesEnum.logoAlt.path,
           ),
         ),
       ),
