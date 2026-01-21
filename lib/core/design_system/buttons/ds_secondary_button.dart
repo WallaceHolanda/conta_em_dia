@@ -19,7 +19,7 @@ class DsSecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 56,
+      height: 48,
       child: OutlinedButton(
         onPressed: enabled ? onPressed : null,
         style: OutlinedButton.styleFrom(

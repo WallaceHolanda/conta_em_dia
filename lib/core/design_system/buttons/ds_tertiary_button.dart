@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../ds_colors.dart';
+import '../typography/typography.dart';
 
 class DsTertiaryButton extends StatelessWidget {
   final String text;
@@ -26,7 +27,12 @@ class DsTertiaryButton extends StatelessWidget {
           fontSize: 18,
         ),
       ),
-      child: Text(text),
+      child: DsText(
+        text,
+        textAlign: TextAlign.center,
+        variant: DsTextVariant.button,
+        color: enabled ? DsColors.primary : DsColors.neutral40,
+      ),
     );
   }
 }
