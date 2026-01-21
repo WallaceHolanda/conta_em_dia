@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
-import '../network/network_client.dart';
-import '../network/dio_network_client.dart';
-import '../network/dio_interceptors.dart';
+import 'core/network/network_client.dart';
+import 'core/network/dio_network_client.dart';
+import 'core/network/dio_interceptors.dart';
 import 'injection.config.dart';
 
 final getIt = GetIt.instance;
