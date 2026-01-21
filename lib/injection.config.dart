@@ -28,6 +28,7 @@ import 'features/login/domain/repositories/auth_repository.dart' as _i590;
 import 'features/login/presentation/cubit/login_cubit.dart' as _i774;
 import 'features/onboarding/data/onboarding_repository_impl.dart' as _i801;
 import 'features/onboarding/domain/onboarding_repository.dart' as _i761;
+import 'features/onboarding/presentation/cubit/onboarding_cubit.dart' as _i133;
 import 'features/splash/data/splash_repository_impl.dart' as _i634;
 import 'features/splash/domain/splash_repository.dart' as _i43;
 import 'features/splash/presentation/cubit/splash_cubit.dart' as _i402;
@@ -71,6 +72,9 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i590.AuthRepository>(
     () => _i606.AuthRepositoryImpl(gh<_i608.AuthDataSource>()),
+  );
+  gh.factory<_i133.OnboardingCubit>(
+    () => _i133.OnboardingCubit(gh<_i761.OnboardingRepository>()),
   );
   gh.factory<_i774.LoginCubit>(
     () => _i774.LoginCubit(gh<_i590.AuthRepository>()),

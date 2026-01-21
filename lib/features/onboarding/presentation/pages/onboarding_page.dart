@@ -83,12 +83,10 @@ class OnboardingPage extends StatelessWidget {
                         DsPrimaryButton(
                           text: DsStrings.start,
                           onPressed: () async {
-                            final onboardingCubit =
-                                BlocProvider.of<OnboardingCubit>(
-                                  context,
-                                  listen: false,
-                                );
-                            await onboardingCubit.setOnboardingSeen();
+                            final cubit = context.read<OnboardingCubit>();
+                            await cubit.setOnboardingSeen();
+
+                            if (!context.mounted) return;
                             AppNavigator.goToLogin(context);
                           },
                         ),

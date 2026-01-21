@@ -1,9 +1,11 @@
+import 'package:conta_em_dia/core/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/assets/ds_images_enum.dart';
+import '../../../../core/design_system/design_system.dart';
 import '../../../../core/navigation/app_navigator.dart';
 import '../cubit/login_cubit.dart';
 import '../cubit/login_state.dart';
-import '../widgets/validators.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,7 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
@@ -32,40 +33,72 @@ class _LoginPageState extends State<LoginPage> {
           }
         },
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const .symmetric(horizontal: 24, vertical: 48),
           child: Form(
             key: _formKey,
             child: Column(
-              children: <Widget>[
-                TextFormField(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DsImage(
+                  height: 25,
+                  width: 150,
+                  path: DsImagesEnum.logo.path,
+                ),
+                SizedBox(height: 48),
+                DsText(
+                  DsStrings.loginText,
+                  variant: DsTextVariant.h3,
+                  textAlign: TextAlign.left,
+                  color: DsColors.neutral60,
+                ),
+                SizedBox(height: 8),
+                DsText(
+                  DsStrings.loginSubText,
+                  variant: DsTextVariant.body2,
+                  textAlign: TextAlign.left,
+                  color: DsColors.neutral60,
+                ),
+                SizedBox(height: 24),
+                DsTextFormField(
+                  labelText: 'E-mail',
+                  validator: Validators.email,
                   controller: _emailController,
-                  decoration: InputDecoration(labelText: 'Email'),
-                  validator: validateEmail,
+                  keyboardType: TextInputType.emailAddress,
                 ),
-                TextFormField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(labelText: 'Senha'),
+                SizedBox(height: 24),
+                DsTextFormField(
                   obscureText: true,
-                  validator: validatePassword,
+                  labelText: 'Senha',
+                  validator: Validators.password,
+                  controller: _passwordController,
+                  keyboardType: TextInputType.visiblePassword,
                 ),
-                SizedBox(height: 20),
-                BlocBuilder<LoginCubit, LoginState>(
-                  builder: (context, state) {
-                    if (state is LoginLoading) {
-                      return CircularProgressIndicator();
+                SizedBox(height: 48),
+                DsPrimaryButton(
+                  text: DsStrings.enter,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<LoginCubit>().login(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
                     }
-                    return ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.read<LoginCubit>().login(
-                            _emailController.text,
-                            _passwordController.text,
-                          );
-                        }
-                      },
-                      child: Text('Login'),
-                    );
                   },
+                ),
+                Spacer(),
+                Center(
+                  child: DsText(
+                    DsStrings.noAccount,
+                    variant: DsTextVariant.body1,
+                    textAlign: TextAlign.center,
+                    color: DsColors.neutral60,
+                  ),
+                ),
+                SizedBox(height: 24),
+                DsSecondaryButton(
+                  text: DsStrings.createAccount,
+                  onPressed: () {},
                 ),
               ],
             ),

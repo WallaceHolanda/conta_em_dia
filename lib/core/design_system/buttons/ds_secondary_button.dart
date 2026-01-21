@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../ds_colors.dart';
+import '../typography/typography.dart';
 
 class DsSecondaryButton extends StatelessWidget {
   final String text;
@@ -36,7 +37,12 @@ class DsSecondaryButton extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        child: Text(text),
+        child: DsText(
+          text,
+          textAlign: TextAlign.center,
+          variant: DsTextVariant.button,
+          color: enabled ? DsColors.primary : DsColors.neutral40,
+        ),
       ),
     );
   }
