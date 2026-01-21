@@ -1,10 +1,12 @@
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 
 import 'ds_text_variant.dart';
 
 class DsTypography {
-  static TextStyle get _base => GoogleFonts.montserrat(height: 1.2);
+  static TextStyle get _base => const TextStyle(
+    fontFamily: 'Montserrat',
+    height: 1.4,
+  );
 
   static TextStyle style(DsTextVariant variant) {
     switch (variant) {
@@ -16,9 +18,9 @@ class DsTypography {
         return _base.copyWith(fontSize: 20, fontWeight: FontWeight.w600);
       case DsTextVariant.h4:
         return _base.copyWith(fontSize: 18, fontWeight: FontWeight.w400);
-      case DsTextVariant.bodyLarge:
+      case DsTextVariant.body1:
         return _base.copyWith(fontSize: 16, fontWeight: FontWeight.w600);
-      case DsTextVariant.body:
+      case DsTextVariant.body2:
         return _base.copyWith(fontSize: 14, fontWeight: FontWeight.w500);
       case DsTextVariant.label:
         return _base.copyWith(fontSize: 14, fontWeight: FontWeight.w600);

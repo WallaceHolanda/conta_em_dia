@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import 'ds_text_variant.dart';
 import 'ds_typography.dart';
@@ -25,7 +25,9 @@ class DsText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: DsTypography.style(variant).copyWith(color: color),
+      style: DsTypography.style(
+        variant,
+      ).copyWith(color: color),
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: overflow,
