@@ -8,7 +8,9 @@ class AppNavigator {
     ).pushReplacementNamed(AppRoutes.login, arguments: arguments);
   }
 
-  static void goToDashboard(BuildContext context) {
-    Navigator.of(context).pushReplacementNamed(AppRoutes.onboarding);
+  static void goToRegister(BuildContext context, {Object? arguments}) {
+    Navigator.of(
+      context,
+    ).pushReplacementNamed(AppRoutes.register, arguments: arguments);
   }
 }

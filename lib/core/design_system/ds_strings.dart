@@ -11,4 +11,8 @@ class DsStrings {
   static const String noAccount = "Ainda não tem conta?";
   static const String enter = "Entrar";
   static const String createAccount = "Criar conta";
+  static const String registerTitle = "Comece sua jornada!";
+  static const String registerSubTitle =
+      "Organize seus gastos de forma simples e sem complicação.";
+  static const String alreadyHasAccount = "Já tem conta?";
 }

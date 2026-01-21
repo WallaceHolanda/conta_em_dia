@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            AppNavigator.goToDashboard(context);
+            // TODO: Adicionar navegação para home
           } else if (state is LoginFailure) {
             ScaffoldMessenger.of(
               context,
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 24),
                 DsSecondaryButton(
                   text: DsStrings.createAccount,
-                  onPressed: () {},
+                  onPressed: () => AppNavigator.goToRegister(context),
                 ),
               ],
             ),

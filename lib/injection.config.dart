@@ -29,6 +29,16 @@ import 'features/login/presentation/cubit/login_cubit.dart' as _i774;
 import 'features/onboarding/data/onboarding_repository_impl.dart' as _i801;
 import 'features/onboarding/domain/onboarding_repository.dart' as _i761;
 import 'features/onboarding/presentation/cubit/onboarding_cubit.dart' as _i133;
+import 'features/register/data/datasources/register_datasource.dart' as _i475;
+import 'features/register/data/datasources/register_mock_datasource.dart'
+    as _i77;
+import 'features/register/data/datasources/register_remote_datasource.dart'
+    as _i1035;
+import 'features/register/data/repositories/register_repository_impl.dart'
+    as _i724;
+import 'features/register/domain/repositories/register_repository.dart'
+    as _i322;
+import 'features/register/presentation/cubit/register_cubit.dart' as _i912;
 import 'features/splash/data/splash_repository_impl.dart' as _i634;
 import 'features/splash/domain/splash_repository.dart' as _i43;
 import 'features/splash/presentation/cubit/splash_cubit.dart' as _i402;
@@ -54,6 +64,10 @@ _i174.GetIt init(
   gh.lazySingleton<_i797.SecureStorageService>(
     () => _i345.FlutterSecureStorageService(),
   );
+  gh.lazySingleton<_i475.RegisterDataSource>(
+    () => _i77.RegisterMockDataSource(),
+    registerFor: {_mock},
+  );
   gh.lazySingleton<_i190.LocalStorageService>(
     () => _i972.SharedPreferencesStorageService(),
   );
@@ -64,8 +78,15 @@ _i174.GetIt init(
     () => _i697.AuthRemoteDataSource(gh<_i865.NetworkClient>()),
     registerFor: {_dev},
   );
+  gh.lazySingleton<_i475.RegisterDataSource>(
+    () => _i1035.RegisterRemoteDataSource(gh<_i865.NetworkClient>()),
+    registerFor: {_dev},
+  );
   gh.lazySingleton<_i761.OnboardingRepository>(
     () => _i801.OnboardingRepositoryImpl(gh<_i190.LocalStorageService>()),
+  );
+  gh.lazySingleton<_i322.RegisterRepository>(
+    () => _i724.RegisterRepositoryImpl(gh<_i475.RegisterDataSource>()),
   );
   gh.factory<_i402.SplashCubit>(
     () => _i402.SplashCubit(gh<_i43.SplashRepository>()),
@@ -75,6 +96,9 @@ _i174.GetIt init(
   );
   gh.factory<_i133.OnboardingCubit>(
     () => _i133.OnboardingCubit(gh<_i761.OnboardingRepository>()),
+  );
+  gh.factory<_i912.RegisterCubit>(
+    () => _i912.RegisterCubit(gh<_i322.RegisterRepository>()),
   );
   gh.factory<_i774.LoginCubit>(
     () => _i774.LoginCubit(gh<_i590.AuthRepository>()),
