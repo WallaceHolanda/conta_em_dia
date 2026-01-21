@@ -5,12 +5,14 @@ class DsImage extends StatelessWidget {
   final String path;
   final double width;
   final double height;
+  final Color? color;
 
   const DsImage({
     super.key,
     required this.path,
     required this.width,
     required this.height,
+    this.color,
   });
 
   @override
@@ -19,6 +21,12 @@ class DsImage extends StatelessWidget {
       path,
       width: width,
       height: height,
+      colorFilter: color != null
+          ? ColorFilter.mode(
+              color!,
+              BlendMode.srcIn,
+            )
+          : null,
     );
   }
 }

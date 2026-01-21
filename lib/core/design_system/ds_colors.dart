@@ -18,6 +18,7 @@ class DsColors {
   static const Color neutral40 = Color(0xFF888888);
   static const Color neutral50 = Color(0xFF666666);
   static const Color neutral60 = Color(0xFF444444);
+  static const Color neutralWhite = Color(0xFFFCFCFC);
 
   // Alert
   static const Color info = Color(0xFFF59E0B);
@@ -26,5 +27,5 @@ class DsColors {
 
   static const Color black = Color(0xFF000000);
   static const Color background = Color(0xFFF1F1F1);
-  static const Color whiteBackground = Color(0xFFFCFCFC);
+  static const Color transparent = Colors.transparent;
 }

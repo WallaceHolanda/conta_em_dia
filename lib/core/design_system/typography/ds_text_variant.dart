@@ -1,4 +1,4 @@
-enum DSTextVariant {
+enum DsTextVariant {
   h1,
   h2,
   h3,

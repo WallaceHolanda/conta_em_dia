@@ -3,28 +3,28 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'ds_text_variant.dart';
 
-class DSTypography {
+class DsTypography {
   static TextStyle get _base => GoogleFonts.montserrat(height: 1.2);
 
-  static TextStyle style(DSTextVariant variant) {
+  static TextStyle style(DsTextVariant variant) {
     switch (variant) {
-      case DSTextVariant.h1:
+      case DsTextVariant.h1:
         return _base.copyWith(fontSize: 32, fontWeight: FontWeight.w600);
-      case DSTextVariant.h2:
+      case DsTextVariant.h2:
         return _base.copyWith(fontSize: 24, fontWeight: FontWeight.w400);
-      case DSTextVariant.h3:
+      case DsTextVariant.h3:
         return _base.copyWith(fontSize: 20, fontWeight: FontWeight.w600);
-      case DSTextVariant.h4:
+      case DsTextVariant.h4:
         return _base.copyWith(fontSize: 18, fontWeight: FontWeight.w400);
-      case DSTextVariant.bodyLarge:
+      case DsTextVariant.bodyLarge:
         return _base.copyWith(fontSize: 16, fontWeight: FontWeight.w600);
-      case DSTextVariant.body:
+      case DsTextVariant.body:
         return _base.copyWith(fontSize: 14, fontWeight: FontWeight.w500);
-      case DSTextVariant.label:
+      case DsTextVariant.label:
         return _base.copyWith(fontSize: 14, fontWeight: FontWeight.w600);
-      case DSTextVariant.button:
+      case DsTextVariant.button:
         return _base.copyWith(fontSize: 14, fontWeight: FontWeight.w700);
-      case DSTextVariant.description:
+      case DsTextVariant.description:
         return _base.copyWith(fontSize: 12, fontWeight: FontWeight.w500);
     }
   }

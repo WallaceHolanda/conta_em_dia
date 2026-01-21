@@ -1,3 +1,4 @@
+import 'package:conta_em_dia/core/design_system/typography/typography.dart';
 import 'package:flutter/material.dart';
 
 import '../ds_colors.dart';
@@ -29,12 +30,13 @@ class DsPrimaryButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          textStyle: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
         ),
-        child: Text(text),
+        child: DsText(
+          text,
+          textAlign: TextAlign.center,
+          variant: DsTextVariant.button,
+          color: DsColors.neutralWhite,
+        ),
       ),
     );
   }
