@@ -5,9 +5,7 @@ class DioNetworkClient implements NetworkClient {
   final Dio dio;
 
   DioNetworkClient(this.dio) {
-    // Configure Dio with base options
-    dio.options.baseUrl =
-        'http://localhost:3000'; // Example, should be configurable
+    dio.options.baseUrl = 'http://10.0.2.2:8000';
     dio.options.connectTimeout = Duration(seconds: 5);
     dio.options.receiveTimeout = Duration(seconds: 5);
   }
