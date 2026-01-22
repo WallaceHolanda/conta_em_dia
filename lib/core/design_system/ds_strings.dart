@@ -15,4 +15,12 @@ class DsStrings {
   static const String registerSubTitle =
       "Organize seus gastos de forma simples e sem complicação.";
   static const String alreadyHasAccount = "Já tem conta?";
+
+  // Home
+  static const String homeWelcome = "Boas-vindas";
+  static const String homeSubtitle =
+      "Tenha seus gastos sempre sob controle, sem complicação.";
+  static const String myExpenses = "Minhas despesas";
+  static const String accountsAndCards = "Contas e cartões";
+  static const String lastExpenses = "Últimas despesas";
 }

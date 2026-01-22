@@ -13,4 +13,10 @@ class AppNavigator {
       context,
     ).pushReplacementNamed(AppRoutes.register, arguments: arguments);
   }
+
+  static void goToHome(BuildContext context, {Object? arguments}) {
+    Navigator.of(
+      context,
+    ).pushReplacementNamed(AppRoutes.home, arguments: arguments);
+  }
 }

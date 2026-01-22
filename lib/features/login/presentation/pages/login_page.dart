@@ -78,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                 DsPrimaryButton(
                   text: DsStrings.enter,
                   onPressed: () {
+                    AppNavigator.goToHome(context);
                     if (_formKey.currentState!.validate()) {
                       context.read<LoginCubit>().login(
                         _emailController.text,

@@ -17,21 +17,18 @@ class DsTertiaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: enabled ? onPressed : null,
-      style: TextButton.styleFrom(
-        foregroundColor: enabled ? DsColors.primary : DsColors.neutral40,
-        disabledForegroundColor: DsColors.neutral30,
-        textStyle: const TextStyle(
-          fontWeight: FontWeight.w700,
-          fontSize: 18,
+    final color = enabled ? DsColors.primary : DsColors.neutral40;
+
+    return InkWell(
+      onTap: enabled ? onPressed : null,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+        child: DsText(
+          text,
+          textAlign: TextAlign.center,
+          variant: DsTextVariant.button,
+          color: color,
         ),
-      ),
-      child: DsText(
-        text,
-        textAlign: TextAlign.center,
-        variant: DsTextVariant.button,
-        color: enabled ? DsColors.primary : DsColors.neutral40,
       ),
     );
   }

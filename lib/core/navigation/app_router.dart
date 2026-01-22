@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../features/home/presentation/routes/home_route.dart';
 import '../../features/login/presentation/routes/login_route.dart';
 import '../../features/onboarding/presentation/routes/onboarding_route.dart';
 import '../../features/splash/presentation/routes/splash_route.dart';
@@ -11,5 +12,6 @@ class AppRouter {
     AppRoutes.onboarding: (context) => const OnboardingRoute(),
     AppRoutes.login: (context) => const LoginRoute(),
     AppRoutes.register: (context) => const RegisterRoute(),
+    AppRoutes.home: (context) => const HomeRoute(),
   };
 }

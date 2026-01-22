@@ -20,6 +20,11 @@ import 'core/storage/implementations/shared_preferences_storage_service.dart'
     as _i972;
 import 'core/storage/local_storage_service.dart' as _i190;
 import 'core/storage/secure_storage_service.dart' as _i797;
+import 'features/home/data/datasources/home_datasource.dart' as _i250;
+import 'features/home/data/datasources/home_mock_datasource.dart' as _i41;
+import 'features/home/data/repositories/home_repository_impl.dart' as _i689;
+import 'features/home/domain/repositories/home_repository.dart' as _i649;
+import 'features/home/presentation/cubit/home_cubit.dart' as _i403;
 import 'features/login/data/datasources/auth_datasource.dart' as _i608;
 import 'features/login/data/datasources/auth_mock_datasource.dart' as _i560;
 import 'features/login/data/datasources/auth_remote_datasource.dart' as _i697;
@@ -57,6 +62,10 @@ _i174.GetIt init(
   final registerModule = _$RegisterModule();
   gh.singleton<_i361.Dio>(() => registerModule.dio);
   gh.singleton<_i865.NetworkClient>(() => registerModule.networkClient);
+  gh.lazySingleton<_i250.HomeDataSource>(
+    () => _i41.HomeMockDataSource(),
+    registerFor: {_mock},
+  );
   gh.lazySingleton<_i608.AuthDataSource>(
     () => _i560.AuthMockDataSource(),
     registerFor: {_mock},
@@ -85,6 +94,9 @@ _i174.GetIt init(
   gh.lazySingleton<_i761.OnboardingRepository>(
     () => _i801.OnboardingRepositoryImpl(gh<_i190.LocalStorageService>()),
   );
+  gh.lazySingleton<_i649.HomeRepository>(
+    () => _i689.HomeRepositoryImpl(gh<_i250.HomeDataSource>()),
+  );
   gh.lazySingleton<_i322.RegisterRepository>(
     () => _i724.RegisterRepositoryImpl(gh<_i475.RegisterDataSource>()),
   );
@@ -99,6 +111,9 @@ _i174.GetIt init(
   );
   gh.factory<_i912.RegisterCubit>(
     () => _i912.RegisterCubit(gh<_i322.RegisterRepository>()),
+  );
+  gh.factory<_i403.HomeCubit>(
+    () => _i403.HomeCubit(gh<_i649.HomeRepository>()),
   );
   gh.factory<_i774.LoginCubit>(
     () => _i774.LoginCubit(gh<_i590.AuthRepository>()),
