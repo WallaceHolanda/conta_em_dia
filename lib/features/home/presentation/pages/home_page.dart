@@ -34,7 +34,9 @@ class _HomePageState extends State<HomePage> {
               if (state is HomeLoading || state is HomeInitial) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is HomeFailure) {
-                return Center(child: Text(state.error));
+                return Center(
+                  child: Text("Ocorreu um erro ao carregar os dados."),
+                );
               } else if (state is HomeSuccess) {
                 final homeData = state.data;
                 return Column(

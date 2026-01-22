@@ -1,19 +1,17 @@
 import 'package:injectable/injectable.dart';
+import '../models/login_response_model.dart';
 import 'auth_datasource.dart';
-import '../models/user_model.dart';
 
 @LazySingleton(as: AuthDataSource, env: ['mock'])
 class AuthMockDataSource implements AuthDataSource {
   @override
-  Future<UserModel> login(String email, String password) async {
-    // Simulate API delay
-    await Future.delayed(Duration(seconds: 1));
+  Future<LoginResponseModel> login(String email, String password) async {
+    await Future.delayed(Duration(seconds: 2));
 
-    // Mock validation
-    if (email == 'test@example.com' && password == 'password') {
-      return UserModel(id: '1', email: email, name: 'Test User');
-    } else {
-      throw Exception('Invalid credentials');
-    }
+    return LoginResponseModel(
+      tokenType: "Bearer",
+      accessToken: "mock_access_token",
+      refreshToken: "mock_refresh_token",
+    );
   }
 }

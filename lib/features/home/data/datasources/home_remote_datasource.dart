@@ -1,27 +1,23 @@
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
-import '../models/login_response_model.dart';
-import 'auth_datasource.dart';
 import '../../../../core/network/network_client.dart';
 import '../../../../core/network/network_exceptions.dart';
+import '../models/home_model.dart';
+import 'home_datasource.dart';
 
-@LazySingleton(as: AuthDataSource, env: ['dev'])
-class AuthRemoteDataSource implements AuthDataSource {
+@LazySingleton(as: HomeDataSource, env: ['dev'])
+class HomeRemoteDataSource implements HomeDataSource {
   final NetworkClient networkClient;
 
-  AuthRemoteDataSource(this.networkClient);
+  HomeRemoteDataSource(this.networkClient);
 
   @override
-  Future<LoginResponseModel> login(String email, String password) async {
+  Future<HomeModel> getHomeItems() async {
     try {
-      final response = await networkClient.post(
-        '/login',
-        data: {'username': email, 'password': password},
-        options: Options(contentType: Headers.formUrlEncodedContentType),
-      );
+      final response = await networkClient.get('/home');
 
       if (response.statusCode == 200) {
-        return LoginResponseModel.fromJson(response.data);
+        return HomeModel.fromJson(response.data);
       } else {
         throw NetworkException(
           'Login failed with status: ${response.statusCode}',

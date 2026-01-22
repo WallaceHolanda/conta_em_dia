@@ -1,19 +1,9 @@
-import '../../domain/entities/user.dart';
-
 abstract class LoginState {}
 
 class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 
-class LoginSuccess extends LoginState {
-  final User user;
+class LoginSuccess extends LoginState {}
 
-  LoginSuccess(this.user);
-}
-
-class LoginFailure extends LoginState {
-  final String error;
-
-  LoginFailure(this.error);
-}
+class LoginFailure extends LoginState {}

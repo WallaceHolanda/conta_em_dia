@@ -23,13 +23,21 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<LoginCubit, LoginState>(
+        listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is LoginSuccess) {
-            // TODO: Adicionar navegação para home
-          } else if (state is LoginFailure) {
-            ScaffoldMessenger.of(
+            AppSnackBar.show(
               context,
-            ).showSnackBar(SnackBar(content: Text(state.error)));
+              message: 'Usuário logado com sucesso.',
+              type: AppSnackBarType.success,
+            );
+            AppNavigator.goToHome(context);
+          } else if (state is LoginFailure) {
+            AppSnackBar.show(
+              context,
+              message: 'Ocorreu um erro ao realizar o login.',
+              type: AppSnackBarType.error,
+            );
           }
         },
         child: Padding(
@@ -77,10 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 48),
                 DsPrimaryButton(
                   text: DsStrings.enter,
-                  onPressed: () {
-                    AppNavigator.goToHome(context);
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      context.read<LoginCubit>().login(
+                      await context.read<LoginCubit>().login(
                         _emailController.text,
                         _passwordController.text,
                       );

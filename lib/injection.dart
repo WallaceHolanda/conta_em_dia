@@ -1,9 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
+
 import 'core/network/network_client.dart';
 import 'core/network/dio_network_client.dart';
 import 'core/network/dio_interceptors.dart';
+import 'core/storage/secure_storage_service.dart';
+
 import 'injection.config.dart';
 
 final getIt = GetIt.instance;
@@ -19,15 +22,21 @@ void configureDependencies(String environment) =>
 @module
 abstract class RegisterModule {
   @singleton
-  Dio get dio {
+  Dio dio(SecureStorageService secureStorageService) {
     final dio = Dio();
+
     dio.interceptors.addAll([
-      AuthInterceptor(() async => 'mock-token'),
-      LoggingInterceptor(),
+      AuthInterceptor(
+        dio: dio,
+        storage: secureStorageService,
+      ),
     ]);
+
     return dio;
   }
 
   @singleton
-  NetworkClient get networkClient => DioNetworkClient(dio);
+  NetworkClient networkClient(Dio dio) {
+    return DioNetworkClient(dio);
+  }
 }

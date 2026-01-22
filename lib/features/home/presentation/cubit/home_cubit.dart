@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
       final data = await repository.getHomeItems();
       emit(HomeSuccess(data));
     } catch (e) {
-      emit(HomeFailure(e.toString()));
+      emit(HomeFailure());
     }
   }
 }

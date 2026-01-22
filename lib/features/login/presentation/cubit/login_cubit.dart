@@ -12,10 +12,10 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login(String email, String password) async {
     emit(LoginLoading());
     try {
-      final user = await authRepository.login(email, password);
-      emit(LoginSuccess(user));
+      await authRepository.login(email, password);
+      emit(LoginSuccess());
     } catch (e) {
-      emit(LoginFailure(e.toString()));
+      emit(LoginFailure());
     }
   }
 }

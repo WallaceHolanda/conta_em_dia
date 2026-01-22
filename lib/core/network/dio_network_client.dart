@@ -16,8 +16,12 @@ class DioNetworkClient implements NetworkClient {
   }
 
   @override
-  Future<Response> post(String url, {Map<String, dynamic>? data}) {
-    return dio.post(url, data: data);
+  Future<Response> post(
+    String url, {
+    Map<String, dynamic>? data,
+    Options? options,
+  }) {
+    return dio.post(url, data: data, options: options);
   }
 
   @override

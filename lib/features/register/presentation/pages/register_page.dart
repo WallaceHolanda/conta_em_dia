@@ -3,7 +3,6 @@ import 'package:conta_em_dia/core/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/design_system/design_system.dart';
-import '../../../../core/design_system/ds_snack_bar.dart';
 import '../cubit/register_cubit.dart';
 import '../cubit/register_state.dart';
 

@@ -1,5 +1,5 @@
-import '../models/user_model.dart';
+import '../models/login_response_model.dart';
 
 abstract class AuthDataSource {
-  Future<UserModel> login(String email, String password);
+  Future<LoginResponseModel> login(String email, String password);
 }

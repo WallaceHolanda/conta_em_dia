@@ -4,3 +4,4 @@ export 'ds_image.dart';
 export 'ds_strings.dart';
 export 'typography/typography.dart';
 export 'buttons/buttons.dart';
+export 'ds_snack_bar.dart';
