@@ -45,6 +45,18 @@ import 'features/register/data/repositories/register_repository_impl.dart'
 import 'features/register/domain/repositories/register_repository.dart'
     as _i322;
 import 'features/register/presentation/cubit/register_cubit.dart' as _i912;
+import 'features/register_expense/data/datasources/register_expense_datasource.dart'
+    as _i93;
+import 'features/register_expense/data/datasources/register_expense_mock_datasource.dart'
+    as _i389;
+import 'features/register_expense/data/datasources/register_expense_remote_datasource.dart'
+    as _i726;
+import 'features/register_expense/data/repositories/register_expense_repository_impl.dart'
+    as _i418;
+import 'features/register_expense/domain/repositories/register_expense_repository.dart'
+    as _i93;
+import 'features/register_expense/presentation/cubit/register_expense_cubit.dart'
+    as _i983;
 import 'features/splash/data/splash_repository_impl.dart' as _i634;
 import 'features/splash/domain/splash_repository.dart' as _i43;
 import 'features/splash/presentation/cubit/splash_cubit.dart' as _i402;
@@ -61,6 +73,10 @@ _i174.GetIt init(
 }) {
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final registerModule = _$RegisterModule();
+  gh.lazySingleton<_i93.RegisterExpenseDataSource>(
+    () => _i389.RegisterExpenseMockDataSource(),
+    registerFor: {_mock},
+  );
   gh.lazySingleton<_i250.HomeDataSource>(
     () => _i41.HomeMockDataSource(),
     registerFor: {_mock},
@@ -105,6 +121,10 @@ _i174.GetIt init(
     () => _i400.HomeRemoteDataSource(gh<_i865.NetworkClient>()),
     registerFor: {_dev},
   );
+  gh.lazySingleton<_i93.RegisterExpenseDataSource>(
+    () => _i726.RegisterExpenseRemoteDataSource(gh<_i865.NetworkClient>()),
+    registerFor: {_dev},
+  );
   gh.lazySingleton<_i475.RegisterDataSource>(
     () => _i1035.RegisterRemoteDataSource(gh<_i865.NetworkClient>()),
     registerFor: {_dev},
@@ -114,6 +134,14 @@ _i174.GetIt init(
       gh<_i608.AuthDataSource>(),
       gh<_i797.SecureStorageService>(),
     ),
+  );
+  gh.lazySingleton<_i93.RegisterExpenseRepository>(
+    () => _i418.RegisterExpenseRepositoryImpl(
+      gh<_i93.RegisterExpenseDataSource>(),
+    ),
+  );
+  gh.factory<_i983.RegisterExpenseCubit>(
+    () => _i983.RegisterExpenseCubit(gh<_i93.RegisterExpenseRepository>()),
   );
   gh.lazySingleton<_i322.RegisterRepository>(
     () => _i724.RegisterRepositoryImpl(gh<_i475.RegisterDataSource>()),

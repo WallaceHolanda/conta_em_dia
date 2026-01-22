@@ -20,4 +20,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return;
   }
+
+  @override
+  Future<void> logout() async {
+    await storage.deleteAll();
+  }
 }

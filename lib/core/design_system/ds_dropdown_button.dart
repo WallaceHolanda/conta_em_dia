@@ -40,6 +40,28 @@ class DsDropdownButton<T> extends StatelessWidget {
         validator: validator,
         onChanged: isLoading ? null : onChanged,
         alignment: alignment ?? Alignment.centerLeft,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 10,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: DsColors.neutral30,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: DsColors.primary,
+              width: 2,
+            ),
+          ),
+          labelText: textLabel,
+          labelStyle: TextStyle(
+            color: DsColors.neutral60,
+          ),
+        ),
         hint: Text(
           textHint,
           overflow: TextOverflow.ellipsis,

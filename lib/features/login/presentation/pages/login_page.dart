@@ -26,11 +26,6 @@ class _LoginPageState extends State<LoginPage> {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is LoginSuccess) {
-            AppSnackBar.show(
-              context,
-              message: 'Usuário logado com sucesso.',
-              type: AppSnackBarType.success,
-            );
             AppNavigator.goToHome(context);
           } else if (state is LoginFailure) {
             AppSnackBar.show(

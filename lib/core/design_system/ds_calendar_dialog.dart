@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DSCalendarDialog {
-  static Future<DateTime?> exibirCalendario({
+  static Future<DateTime?> showCalendar({
     required BuildContext context,
     required DateTime diaInicial,
     required DateTime primeiraDataDoCalendario,

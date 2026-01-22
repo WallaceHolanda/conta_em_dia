@@ -15,9 +15,12 @@ class RegisterHeaderWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
-              LucideIcons.chevronLeft,
-              color: DsColors.primary,
+            InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Icon(
+                LucideIcons.chevronLeft,
+                color: DsColors.primary,
+              ),
             ),
             DsImage(
               height: 25,
