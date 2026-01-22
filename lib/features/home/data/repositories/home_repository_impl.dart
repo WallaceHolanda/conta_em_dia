@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import '../../domain/entities/home_data.dart';
+import '../../domain/entities/home_data_entity.dart';
 import '../../domain/repositories/home_repository.dart';
 import '../datasources/home_datasource.dart';
 
@@ -10,7 +10,7 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.dataSource);
 
   @override
-  Future<HomeData> getHomeItems() async {
+  Future<HomeDataEntity> getHomeItems() async {
     final model = await dataSource.getHomeItems();
     return model;
   }

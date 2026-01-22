@@ -1,5 +1,5 @@
-import '../entities/home_data.dart';
+import '../entities/home_data_entity.dart';
 
 abstract class HomeRepository {
-  Future<HomeData> getHomeItems();
+  Future<HomeDataEntity> getHomeItems();
 }

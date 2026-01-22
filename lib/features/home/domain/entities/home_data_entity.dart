@@ -1,13 +1,15 @@
 import '../../../common/entities/card/card_account_entity.dart';
 import '../../../common/entities/expense/expense_entity.dart';
 
-class HomeData {
+class HomeDataEntity {
+  final String userName;
   final double totalExpenses;
   final String month;
   final List<CardAccountEntity> cards;
   final List<ExpenseEntity> expenses;
 
-  HomeData({
+  HomeDataEntity({
+    required this.userName,
     required this.totalExpenses,
     required this.month,
     required this.cards,

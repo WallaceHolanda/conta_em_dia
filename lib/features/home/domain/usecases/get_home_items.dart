@@ -1,4 +1,4 @@
-import '../entities/home_data.dart';
+import '../entities/home_data_entity.dart';
 import '../repositories/home_repository.dart';
 
 class GetHomeItems {
@@ -6,7 +6,7 @@ class GetHomeItems {
 
   GetHomeItems(this.repository);
 
-  Future<HomeData> call() async {
+  Future<HomeDataEntity> call() async {
     return repository.getHomeItems();
   }
 }

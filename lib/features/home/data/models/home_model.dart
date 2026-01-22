@@ -1,9 +1,10 @@
 import '../../../common/models/card/card_account_model.dart';
 import '../../../common/models/expense/expense_model.dart';
-import '../../domain/entities/home_data.dart';
+import '../../domain/entities/home_data_entity.dart';
 
-class HomeModel extends HomeData {
+class HomeModel extends HomeDataEntity {
   HomeModel({
+    required super.userName,
     required super.totalExpenses,
     required super.month,
     required super.cards,
@@ -12,6 +13,7 @@ class HomeModel extends HomeData {
 
   factory HomeModel.fromJson(Map<String, dynamic> json) {
     return HomeModel(
+      userName: json['user_name'],
       totalExpenses: json['totalExpenses'],
       month: json['month'],
       cards: (json['cards'] as List)

@@ -1,4 +1,4 @@
-import '../../domain/entities/home_data.dart';
+import '../../domain/entities/home_data_entity.dart';
 
 abstract class HomeState {}
 
@@ -7,7 +7,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
-  final HomeData data;
+  final HomeDataEntity data;
 
   HomeSuccess(this.data);
 }

@@ -85,6 +85,7 @@ class HomeMockDataSource implements HomeDataSource {
     ];
 
     return HomeModel(
+      userName: 'João',
       totalExpenses: 1000.0,
       month: 'Janeiro',
       cards: cards.map((card) => card.toEntity()).toList(),
