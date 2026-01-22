@@ -11,11 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^9.1.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
   injectable: ^2.7.1+4
   dartz: ^0.10.1
   dio: ^5.9.0
-  bloc: ^9.2.0
   get_it: ^9.2.0
   shared_preferences: ^2.5.4
   flutter_secure_storage: ^10.0.0
@@ -28,7 +28,9 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0
   build_runner: ^2.10.5
-  injectable_generator: ^2.12.0
+  mocktail: ^1.0.4
+  bloc_test: ^9.1.5
+  injectable_generator: ^2.9.1
 
 
 # The following section is specific to Flutter packages.
