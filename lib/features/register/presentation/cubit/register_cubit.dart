@@ -12,10 +12,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> register(String name, String email, String password) async {
     emit(RegisterLoading());
     try {
-      final user = await registerRepository.register(name, email, password);
-      emit(RegisterSuccess(user));
+      await registerRepository.register(name, email, password);
+      emit(RegisterSuccess());
     } catch (e) {
-      emit(RegisterFailure(e.toString()));
+      emit(RegisterFailure());
     }
   }
 }

@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'register_datasource.dart';
 import '../../../../core/network/network_client.dart';
 import '../../../../core/network/network_exceptions.dart';
-import '../models/user_model.dart';
 
 @LazySingleton(as: RegisterDataSource, env: ['dev'])
 class RegisterRemoteDataSource implements RegisterDataSource {
@@ -12,7 +11,7 @@ class RegisterRemoteDataSource implements RegisterDataSource {
   RegisterRemoteDataSource(this.networkClient);
 
   @override
-  Future<UserModel> register(String name, String email, String password) async {
+  Future<void> register(String name, String email, String password) async {
     try {
       final response = await networkClient.post(
         '/register',
@@ -20,7 +19,7 @@ class RegisterRemoteDataSource implements RegisterDataSource {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return UserModel.fromJson(response.data);
+        return;
       } else {
         throw NetworkException(
           'Register failed with status: ${response.statusCode}',
