@@ -13,5 +13,7 @@ class AppRouter {
     AppRoutes.login: (context) => const LoginRoute(),
     AppRoutes.register: (context) => const RegisterRoute(),
     AppRoutes.home: (context) => const HomeRoute(),
+    AppRoutes.registerCard: (context) => const Placeholder(),
+    AppRoutes.registerExpense: (context) => const Placeholder(),
   };
 }

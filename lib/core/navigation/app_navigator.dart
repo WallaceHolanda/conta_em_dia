@@ -19,4 +19,27 @@ class AppNavigator {
       context,
     ).pushReplacementNamed(AppRoutes.home, arguments: arguments);
   }
+
+  static void goToRegisterCard(BuildContext context, {Object? arguments}) {
+    Navigator.of(
+      context,
+    ).pushNamed(AppRoutes.registerCard, arguments: arguments);
+  }
+
+  static void goToRegisterExpense(BuildContext context, {Object? arguments}) {
+    Navigator.of(
+      context,
+    ).pushNamed(AppRoutes.registerExpense, arguments: arguments);
+  }
+
+  static void goBackToHome(
+    BuildContext context, {
+    Object? arguments,
+  }) {
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      AppRoutes.home,
+      (route) => false,
+      arguments: arguments,
+    );
+  }
 }

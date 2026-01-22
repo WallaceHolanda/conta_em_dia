@@ -27,39 +27,40 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: DsColors.background,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          child: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              if (state is HomeLoading || state is HomeInitial) {
-                return Center(child: CircularProgressIndicator());
-              } else if (state is HomeFailure) {
-                return Center(
-                  child: Text("Ocorreu um erro ao carregar os dados."),
-                );
-              } else if (state is HomeSuccess) {
-                final homeData = state.data;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    HomeHeaderWidget(userName: 'Maria'),
-                    const SizedBox(height: 32),
-                    HomeCurrentSpendCard(
-                      value: homeData.totalExpenses,
-                      month: homeData.month,
-                    ),
-                    const SizedBox(height: 16),
-                    DsText('Contas e cartões', variant: DsTextVariant.body1),
-                    const SizedBox(height: 12),
-                    HomeCardsList(cards: homeData.cards),
-                    const SizedBox(height: 16),
-                    HomeLastExpensesCard(expenses: homeData.expenses),
-                    const Spacer(),
-                  ],
-                );
-              }
-              return const SizedBox.shrink();
-            },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                if (state is HomeLoading || state is HomeInitial) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is HomeFailure) {
+                  return Center(
+                    child: Text("Ocorreu um erro ao carregar os dados."),
+                  );
+                } else if (state is HomeSuccess) {
+                  final homeData = state.data;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      HomeHeaderWidget(userName: homeData.userName),
+                      const SizedBox(height: 32),
+                      HomeCurrentSpendCard(
+                        value: homeData.totalExpenses,
+                        month: homeData.month,
+                      ),
+                      const SizedBox(height: 16),
+                      DsText('Contas e cartões', variant: DsTextVariant.body1),
+                      const SizedBox(height: 12),
+                      HomeCardsList(cards: homeData.cards),
+                      const SizedBox(height: 16),
+                      HomeLastExpensesCard(expenses: homeData.expenses),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
           ),
         ),
       ),
