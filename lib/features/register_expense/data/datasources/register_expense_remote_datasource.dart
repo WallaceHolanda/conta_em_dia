@@ -77,10 +77,10 @@ class RegisterExpenseRemoteDataSource implements RegisterExpenseDataSource {
         '/expenses',
         data: {
           'amount': amount,
-          'description': description,
-          'categoryId': categoryId,
+          'details': description,
+          'category_id': categoryId,
           'date': date.toIso8601String(),
-          'cardId': cardId,
+          'card_id': cardId,
         },
       );
 

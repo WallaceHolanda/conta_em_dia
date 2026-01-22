@@ -22,7 +22,7 @@ class ExpenseModel {
   factory ExpenseModel.fromJson(Map<String, dynamic> json) {
     return ExpenseModel(
       id: json['id'],
-      description: json['description'],
+      description: json['details'],
       date: DateTime.parse(json['date']),
       amount: (json['amount'] as num).toDouble(),
       card: CardAccountModel.fromJson(json['card']),

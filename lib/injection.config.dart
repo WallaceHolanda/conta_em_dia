@@ -45,6 +45,18 @@ import 'features/register/data/repositories/register_repository_impl.dart'
 import 'features/register/domain/repositories/register_repository.dart'
     as _i322;
 import 'features/register/presentation/cubit/register_cubit.dart' as _i912;
+import 'features/register_card/data/datasources/register_card_datasource.dart'
+    as _i294;
+import 'features/register_card/data/datasources/register_card_mock_datasource.dart'
+    as _i243;
+import 'features/register_card/data/datasources/register_card_remote_datasource.dart'
+    as _i243;
+import 'features/register_card/data/repositories/register_card_repository_impl.dart'
+    as _i536;
+import 'features/register_card/domain/repositories/register_card_repository.dart'
+    as _i406;
+import 'features/register_card/presentation/cubit/register_card_cubit.dart'
+    as _i591;
 import 'features/register_expense/data/datasources/register_expense_datasource.dart'
     as _i93;
 import 'features/register_expense/data/datasources/register_expense_mock_datasource.dart'
@@ -92,6 +104,10 @@ _i174.GetIt init(
     () => _i77.RegisterMockDataSource(),
     registerFor: {_mock},
   );
+  gh.lazySingleton<_i294.RegisterCardDataSource>(
+    () => _i243.RegisterCardMockDataSource(),
+    registerFor: {_mock},
+  );
   gh.lazySingleton<_i190.LocalStorageService>(
     () => _i972.SharedPreferencesStorageService(),
   );
@@ -129,6 +145,10 @@ _i174.GetIt init(
     () => _i1035.RegisterRemoteDataSource(gh<_i865.NetworkClient>()),
     registerFor: {_dev},
   );
+  gh.lazySingleton<_i294.RegisterCardDataSource>(
+    () => _i243.RegisterCardRemoteDataSource(gh<_i865.NetworkClient>()),
+    registerFor: {_dev},
+  );
   gh.lazySingleton<_i590.AuthRepository>(
     () => _i606.AuthRepositoryImpl(
       gh<_i608.AuthDataSource>(),
@@ -149,11 +169,17 @@ _i174.GetIt init(
   gh.factory<_i912.RegisterCubit>(
     () => _i912.RegisterCubit(gh<_i322.RegisterRepository>()),
   );
+  gh.lazySingleton<_i406.RegisterCardRepository>(
+    () => _i536.RegisterCardRepositoryImpl(gh<_i294.RegisterCardDataSource>()),
+  );
   gh.lazySingleton<_i649.HomeRepository>(
     () => _i689.HomeRepositoryImpl(gh<_i250.HomeDataSource>()),
   );
   gh.factory<_i774.LoginCubit>(
     () => _i774.LoginCubit(gh<_i590.AuthRepository>()),
+  );
+  gh.factory<_i591.RegisterCardCubit>(
+    () => _i591.RegisterCardCubit(gh<_i406.RegisterCardRepository>()),
   );
   gh.factory<_i403.HomeCubit>(
     () => _i403.HomeCubit(gh<_i649.HomeRepository>()),
